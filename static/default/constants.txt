@@ -1,0 +1,61 @@
+plugin.jfpowermailfrontend {
+
+	# cat=plugin.jfpowermailfrontend/file/0010; type=file[html,htm,tmpl,txt]; label= Template File list: HTML-template file for showing values in a list (see EXT:jfpowermailfrontend/templates/tmpl_list.html for an example)
+	template.list = EXT:jfpowermailfrontend/templates/tmpl_list.html
+
+	# cat=plugin.jfpowermailfrontend/file/0020; type=file[html,htm,tmpl,txt]; label= Template File latest: HTML-template file for showing latest values in a list (see EXT:jfpowermailfrontend/templates/tmpl_latestt.html for an example)
+	template.latest = EXT:jfpowermailfrontend/templates/tmpl_latest.html
+
+	# cat=plugin.jfpowermailfrontend/file/0030; type=file[html,htm,tmpl,txt]; label= Template File list: HTML-template file for showing values in a detailview (see EXT:jfpowermailfrontend/templates/tmpl_single.html for an example)
+	template.single = EXT:jfpowermailfrontend/templates/tmpl_single.html
+
+	# cat=plugin.jfpowermailfrontend/file/0040; type=file[html,htm,tmpl,txt]; label= Template File all marker: HTML-template file for display automatic markers (see EXT:jfpowermailfrontend/templates/tmpl_all.html for an example)
+	template.all = EXT:jfpowermailfrontend/templates/tmpl_all.html
+
+	# cat=plugin.jfpowermailfrontend/file/0050; type=file[html,htm,tmpl,txt]; label= Template File pagebrowser: HTML-template file for display pagebrowser in listview (see EXT:jfpowermailfrontend/templates/tmpl_pagebrowser.html for an example)
+	template.pagebrowser = EXT:jfpowermailfrontend/templates/tmpl_pagebrowser.html
+
+	# cat=plugin.jfpowermailfrontend/file/0060; type=file[html,htm,tmpl,txt]; label= Template File search: HTML-template file for display searchfilter with listview (see EXT:jfpowermailfrontend/templates/tmpl_search.html for an example)
+	template.search = EXT:jfpowermailfrontend/templates/tmpl_search.html
+
+	# cat=plugin.jfpowermailfrontend/file/0070; type=file[html,htm,tmpl,txt]; label= Template File edit: HTML-template file for edit in frontend (see EXT:jfpowermailfrontend/templates/tmpl_edit.html for an example)
+	template.edit = EXT:jfpowermailfrontend/templates/tmpl_edit.html
+
+
+	# cat=plugin.jfpowermailfrontend/enable/010; type=boolean; label= Hide label if empty value: Value could be hidden if value is empty
+	emptylabels.hide = 1
+
+	# cat=plugin.jfpowermailfrontend/enable/020; type=text; label= List order: List view order by any powermail field (maybe uid34 DESC or uid11 ASC) crdate, recipient, subject_r, sender, senderIP also possible (if empty crdate DESC)
+	list.orderby = 
+
+	# cat=plugin.jfpowermailfrontend/enable/030; type=int; label= List X per page: Define max entries per page for list view (e.g. 10)
+	list.perPage = 10
+
+	# cat=plugin.jfpowermailfrontend/enable/040; type=int; label= List X days: Show only entries of the latest X days (e.g. 10)
+	list.delta = 
+
+	# cat=plugin.jfpowermailfrontend/enable/050; type=int; label= List max. X entries: Show max. X entries (e.g. 10)
+	list.limit = 
+
+	# cat=plugin.jfpowermailfrontend/enable/060; type=text; label= Latest order: Latest view order by any powermail field (maybe uid34 DESC or uid11 ASC) crdate, recipient, subject_r, sender, senderIP also possible (if empty crdate DESC)
+	latest.orderby = 
+
+	# cat=plugin.jfpowermailfrontend/enable/070; type=int; label= Latest X per page: Define max entries per page for latest view (e.g. 10)
+	latest.perPage = 10
+
+	# cat=plugin.jfpowermailfrontend/enable/080; type=int; label= Latest X days: Show only entries of the latest X days (e.g. 10)
+	latest.delta = 
+
+	# cat=plugin.jfpowermailfrontend/enable/090; type=int; label= Latest max. X entries: Show max. latest X entries (e.g. 10)
+	latest.limit = 
+
+	# cat=plugin.jfpowermailfrontend/enable/100; type=int+; label= Usergroup Admin: Admin Usergroup (Admin is allowed to see all entries and to delete entries)
+	admin.feusergroup =
+
+	# cat=plugin.jfpowermailfrontend/enable/110; type=int; label= Overall limit: If you have performance problems, you can define a maximum sql query limit (e.g. 1000)
+	query.limit = 1000
+
+	# cat=plugin.jfpowermailfrontend/enable/120; type=text; label= SQL orderby: Normaly, you define order via list.orderby, this is only for use with query.limit (e.g. crdate DESC)
+	query.orderby = crdate DESC
+
+}

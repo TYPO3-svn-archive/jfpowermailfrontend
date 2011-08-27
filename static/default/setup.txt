@@ -1,0 +1,217 @@
+# JFPOWERMAILFRONTENDD PLUGIN #
+includeLibs.user_powermailfrontend_pagebrowser = EXT:jfpowermailfrontend/lib/user_powermailfrontend_pagebrowser.php
+
+# main settings
+plugin.tx_jfpowermailfrontend_pi1 {
+	# settings for constants
+	template.list = {$plugin.jfpowermailfrontend.template.list}
+	template.latest = {$plugin.jfpowermailfrontend.template.latest}
+	template.single = {$plugin.jfpowermailfrontend.template.single}
+	template.all = {$plugin.jfpowermailfrontend.template.all}
+	template.pagebrowser = {$plugin.jfpowermailfrontend.template.pagebrowser}
+	template.search = {$plugin.jfpowermailfrontend.template.search}
+	template.edit = {$plugin.jfpowermailfrontend.template.edit}
+	emptylabels.hide = {$plugin.jfpowermailfrontend.emptylabels.hide}
+	admin.feusergroup = {$plugin.jfpowermailfrontend.admin.feusergroup}
+	query.limit = {$plugin.jfpowermailfrontend.query.limit}
+	query.orderby = {$plugin.jfpowermailfrontend.query.orderby}
+	
+	# Standardwrap settings for listview
+	list {
+	
+		# CONSTANTS
+		orderby = {$plugin.jfpowermailfrontend.list.orderby}
+		perPage = {$plugin.jfpowermailfrontend.list.perPage}
+		delta = {$plugin.jfpowermailfrontend.list.delta}
+		limit = {$plugin.jfpowermailfrontend.list.limit}
+		
+		
+		# Main Settings for field stdWrap
+		fieldValue = CASE
+		fieldValue.key.field = type
+		fieldValue {
+			text = TEXT
+			text.field = value
+
+			textarea = TEXT
+			textarea.field = value
+			textarea.stdWrap.br = 1
+
+			select = TEXT
+			select.field = value
+
+			check = TEXT
+			check.field = value
+
+			radio = TEXT
+			radio.field = value
+
+			submit = TEXT
+			submit.field = value
+
+
+			##### additional fields #####
+
+			captcha = TEXT
+			captcha.field = value
+
+			reset = TEXT
+			reset.field = value
+
+			label = TEXT
+			label.field = value
+
+			content = TEXT
+			content.field = value
+
+			html = TEXT
+			html.field = value
+
+			password = TEXT
+			password.field = value
+
+			file = TEXT
+			file {
+				field = value
+				typolink.parameter.cObject = COA
+				typolink.parameter.cObject {
+					10 = TEXT
+					10.value = {$plugin.powermail.upload.folder}
+					20 = TEXT
+					20.field = value
+					30 = TEXT
+					30.value = _blank
+					30.noTrimWrap = | ||
+				}
+			}
+
+			hidden = TEXT
+			hidden.field = value
+
+			date = TEXT
+			date.field = value
+
+			datetime = TEXT
+			datetime.field = value
+
+			time = TEXT
+			time.field = value
+
+			button = TEXT
+			button.field = value
+
+			submitgraphic = TEXT
+			submitgraphic.field = value
+
+			countryselect = TEXT
+			countryselect.field = value
+
+			typoscript = TEXT
+			typoscript.field = value
+
+
+			##### default if new field #####
+
+			default = TEXT
+			default.field = type
+			default.noTrimWrap = |jfpowermailfrontend: Fieldtype | is not defined|
+		}
+	
+		# example to link email (overwrites settings of fieldwrap)
+		# uid3333 = TEXT
+		# uid3333.field = uid3333
+		# uid3333.typolink.parameter.field = uid3333
+
+		# example for value of second level (checkbox, radiobutton, etc...) (overwrites settings of fieldwrap)
+		# uid4444_0 = TEXT
+		# uid4444_0.field = uid4444_0
+		# uid4444_0.wrap = <b>|</b>
+
+		# uid4444_1 = TEXT
+		# uid4444_1.field = uid4444_1
+		# uid4444_1.wrap = <b style="color: red;">|</b>
+
+		# example of changing a timestamp to a date format (overwrites settings of fieldwrap)
+		# uid5555 = TEXT
+		# uid5555.field = uid5555
+		# uid5555.strftime = %d.%m.%Y
+	}
+	
+	# Standardwrap settings for latestview
+	latest {
+		# CONSTANTS
+		orderby = {$plugin.jfpowermailfrontend.latest.orderby}
+		perPage = {$plugin.jfpowermailfrontend.latest.perPage}
+		delta = {$plugin.jfpowermailfrontend.latest.delta}
+		limit = {$plugin.jfpowermailfrontend.latest.limit}
+
+		# Main Settings for field stdWrap
+		fieldValue < plugin.tx_jfpowermailfrontend_pi1.list.fieldValue
+
+		# example to link email
+		# uid3333 = TEXT
+		# uid3333.field = uid3333
+		# uid3333.typolink.parameter.field = uid3333
+
+		# example for value of second level (checkbox, radiobutton, etc...)
+		# uid4444_0 = TEXT
+		# uid4444_0.field = uid4444_0
+		# uid4444_0.wrap = <b>|</b>
+
+		# uid4444_1 = TEXT
+		# uid4444_1.field = uid4444_1
+		# uid4444_1.wrap = <b style="color: red;">|</b>
+
+		# example of changing a timestamp to a date format
+		# uid5555 = TEXT
+		# uid5555.field = uid5555
+		# uid5555.strftime = %d.%m.%Y
+	}
+
+	# Standardwrap settings for singleview
+	single {
+		# Main Settings for field stdWrap
+		fieldValue < plugin.tx_jfpowermailfrontend_pi1.list.fieldValue
+
+		# example to link email
+		uid3333 = TEXT
+		uid3333.field = uid3333
+		uid3333.typolink.parameter.field = uid3333
+
+		# example for value of second level (checkbox, radiobutton, etc...)
+		uid4444_0 = TEXT
+		uid4444_0.field = uid4444_0
+		uid4444_0.wrap = <b>|</b>
+
+		uid4444_1 = TEXT
+		uid4444_1.field = uid4444_1
+		uid4444_1.wrap = <b style="color: red;">|</b>
+
+		# example of changing a timestamp to a date format
+		uid5555 = TEXT
+		uid5555.field = uid5555
+		uid5555.strftime = %d.%m.%Y
+	}
+
+	# Settings for editview
+	edit {
+		template.fieldWrap = {$plugin.powermail.template.fieldWrap}
+		description.wrap = {$plugin.powermail.description.wrap}
+		mandatory.symbol = {$plugin.powermail.mandatory.symbol}
+	}
+
+	# Pagebrowser
+	pagebrowser = HMENU
+	pagebrowser {
+		special = userfunction
+		special.userFunc = user_powermailfrontend_pagebrowser->user_pagebrowser
+		1 = TMENU
+		1 {
+			wrap = <ul class="powermailfrontend_pagebrowser">|</ul>
+			NO.allWrap = <li>|</li>
+			ACT = 1
+			ACT.allWrap = <li>|</li>
+			ACT.ATagParams = class="act"
+		}
+	}
+}

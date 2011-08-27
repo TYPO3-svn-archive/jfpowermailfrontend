@@ -1,0 +1,9 @@
+#include sample CSS for jfpowermailfrontend
+page {
+	includeCSS {
+		file3133 = EXT:jfpowermailfrontend/res/css/style.css
+		#file3133.title = jfpowermailfrontend default CSS
+		#file3133.media = screen
+	}
+}
+seite.includeCSS.file3133 < page.includeCSS.file3133
