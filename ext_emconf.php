@@ -11,7 +11,7 @@
 ########################################################################
 
 $EM_CONF[$_EXTKEY] = array(
-	'title' => 'jfpowermailfrontend',
+	'title' => 'Powermail Frontend',
 	'description' => 'Display powermail entries on the frontend',
 	'category' => 'plugin',
 	'shy' => 0,

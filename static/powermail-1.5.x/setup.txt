@@ -1,0 +1,25 @@
+# userFunc to check if powermail is on current page
+# powermail is on current page and prototype should be used
+[userFunc = user_jfpowermailfrontendOnCurrentPage] && [globalVar = LIT:prototype = {$plugin.powermail.libraryToUse}]
+	page.includeJS.file31312 = EXT:powermail/js/mandatoryjs/lib/prototype.js
+	page.includeJS.file31313 = EXT:powermail/js/mandatoryjs/src/effects.js
+	page.includeJS.file31314 = EXT:powermail/js/mandatoryjs/fabtabulous.js
+[end]
+
+
+# powermail is on current page and mootools should be used
+[userFunc = user_jfpowermailfrontendOnCurrentPage] && [globalVar = LIT:mootools = {$plugin.powermail.libraryToUse}]
+	page.includeJS.file31312 = EXT:powermail/js/mootools/mootools-1.2.1-packed.js
+[end]
+
+
+# powermail is on current page
+[userFunc = user_jfpowermailfrontendOnCurrentPage]
+	page.includeJS.file31311 = EXT:powermail/js/misc/misc.js
+	page.headerData.31310 < lib.powermail_dynJavascript
+	seite.headerData.31310 < page.headerData.31310
+	seite.includeJS.31311 < page.includeJS.file31311
+	seite.includeJS.31312 < page.includeJS.file31312
+	seite.includeJS.31313 < page.includeJS.file31313
+	seite.includeJS.31314 < page.includeJS.file31314
+[end]

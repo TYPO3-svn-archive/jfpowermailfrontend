@@ -1,0 +1,112 @@
+// if powermail is on current page and t3jquery is NOT loaded include jquery and jquery tools from cdn
+// Include needed JS libraries to header
+[userFunc = user_jfpowermailfrontendOnCurrentPage] && [userFunc = user_powermailCheckT3jquery(false)]
+page.includeJSlibs {
+	powermail_jQuery.external = 1
+	powermail_jQuery = http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js
+	powermail_jQueryTools.external = 1
+	powermail_jQueryTools = http://cdn.jquerytools.org/1.2.5/form/jquery.tools.min.js
+	powermail_jQueryToolsTabs.external = 1
+	powermail_jQueryToolsTabs = http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js
+}
+// if powermail is on current page and t3jquery is NOT loaded include validation js into page footer
+page.jsFooterInline.10 < lib.powermailjs
+[end]
+
+
+// remove jQuery and jQueryTools libraries from header
+[userFunc = user_jfpowermailfrontendOnCurrentPage] && [userFunc = user_powermailCheckT3jquery(false)] && [globalVar = LIT:1 > {$plugin.powermail.js.toHeader}]
+page.includeJSlibs {
+	powermail_jQuery >
+	powermail_jQueryTools >
+	powermail_jQueryToolsTabs >
+}
+// Include needed JS libraries to footer
+page.includeJSFooterlibs {
+	powermail_jQuery.external = 1
+	powermail_jQuery = http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js
+	powermail_jQueryTools.external = 1
+	powermail_jQueryTools = http://cdn.jquerytools.org/1.2.5/form/jquery.tools.min.js
+	powermail_jQueryToolsTabs.external = 1
+	powermail_jQueryToolsTabs = http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js
+}
+[end]
+
+
+// remove jQuery library
+[globalVar = LIT:1 > {$plugin.powermail.js.includeJquery}]
+page.includeJSFooterlibs.powermail_jQuery >
+page.includeJSlibs.powermail_jQuery >
+[end]
+
+
+// remove jQueryTools library
+[globalVar = LIT:1 > {$plugin.powermail.js.includeJqueryTools}]
+page.includeJSFooterlibs.powermail_jQueryTools >
+page.includeJSlibs.powermail_jQueryTools >
+[end]
+
+
+// remove jQueryTools Tab library
+[globalVar = LIT:1 > {$plugin.powermail.js.includeJqueryToolsTabs}]
+page.includeJSFooterlibs.powermail_jQueryToolsTabs >
+page.includeJSlibs.powermail_jQueryToolsTabs >
+[end]
+
+
+// if powermail is on current page and t3jquery is loaded include jquery and validation js using t3jquery
+[userFunc = user_jfpowermailfrontendOnCurrentPage] && [userFunc = user_powermailCheckT3jquery(true)]
+includeLibs.t3jquery = EXT:t3jquery/class.tx_t3jquery.php
+page.31320 = COA
+page.31320 {
+	10 = USER
+	10 {
+		userFunc = tx_t3jquery->addJS
+		tofooter = 0
+		forceOnTop = 1
+	}
+	20 = USER
+	20 {
+		userFunc = tx_t3jquery->addJS
+		jsurl = http://cdn.jquerytools.org/1.2.5/form/jquery.tools.min.js
+		tofooter = 0
+	}
+	25 = USER
+	25 {
+		userFunc = tx_t3jquery->addJS
+		jsurl = http://cdn.jquerytools.org/1.2.5/tiny/jquery.tools.min.js
+		tofooter = 0
+	}
+	30 = USER
+	30 {
+		userFunc = tx_t3jquery->addJS
+		jsdata.cObject < lib.powermailjs
+		compress = 1
+		tofooter = 0
+	}
+}
+[end]
+
+
+// move js code to header
+[globalVar = LIT:1 > {$plugin.powermail.js.toHeader}]
+page.31320 {
+	10.tofooter = 1
+	20.tofooter = 1
+	25.tofooter = 1
+	30.tofooter = 1
+}
+[end]
+
+
+// if powermail is on current page and t3jquery is loaded and NOT in CDN Mode delete jquery tools
+[userFunc = user_jfpowermailfrontendOnCurrentPage] && [userFunc = user_powermailCheckT3jqueryCDNMode(false)]
+page.31320.20 >
+page.31320.25 >
+[end]
+
+
+// remove jQueryTools tab library if not needed
+[globalVar = LIT:1 > {$plugin.powermail.js.includeJqueryToolsTabs}]
+page.31320.25 >
+[end]

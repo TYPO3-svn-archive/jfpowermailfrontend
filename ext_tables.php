@@ -5,9 +5,33 @@ if (!defined ('TYPO3_MODE')) {
 
 
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'static/default/',         'Powermail Frontend CORE');
+t3lib_extMgm::addStaticFile($_EXTKEY, 'static/default/',         'Powermail Frontend');
 t3lib_extMgm::addStaticFile($_EXTKEY, 'static/default_css/',     'Powermail Frontend CSS');
-t3lib_extMgm::addStaticFile($_EXTKEY, 'static/powermail-1.4.x/', 'Powermail 1.4.x JS');
+
+$powermailVersion = NULL;
+if (method_exists('t3lib_extMgm', 'getExtensionVersion2')) {
+	$powermailVersion = t3lib_div::int_from_ver(t3lib_extMgm::getExtensionVersion('powermail'));
+}
+switch ($powermailVersion) {
+	case $powermailVersion < 1005000 : {
+		t3lib_extMgm::addStaticFile($_EXTKEY, 'static/powermail-1.4.x/', 'Powermail 1.4.x JS');
+		break;
+	}
+	case $powermailVersion < 1006000 : {
+		t3lib_extMgm::addStaticFile($_EXTKEY, 'static/powermail-1.5.x/', 'Powermail 1.5.x JS');
+		break;
+	}
+	case $powermailVersion < 1007000 : {
+		t3lib_extMgm::addStaticFile($_EXTKEY, 'static/powermail-1.6.x/', 'Powermail 1.6.x JS');
+		break;
+	}
+	default : {
+		t3lib_extMgm::addStaticFile($_EXTKEY, 'static/powermail-1.4.x/', 'Powermail 1.4.x JS');
+		t3lib_extMgm::addStaticFile($_EXTKEY, 'static/powermail-1.5.x/', 'Powermail 1.5.x JS');
+		t3lib_extMgm::addStaticFile($_EXTKEY, 'static/powermail-1.6.x/', 'Powermail 1.6.x JS');
+		break;
+	}
+}
 
 
 

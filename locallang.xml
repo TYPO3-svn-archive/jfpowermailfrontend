@@ -6,11 +6,11 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="pi1_title">jfpowermailfrontend</label>
+			<label index="pi1_title">Powermail Frontend</label>
 			<label index="pi1_plus_wiz_description">Frontend listing of powermails of any page</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="pi1_title">jfpowermailfrontend</label>
+			<label index="pi1_title">Powermail Frontend</label>
 			<label index="pi1_plus_wiz_description">Powermail Liste im Frontend</label>
 		</languageKey>
 	</data>
