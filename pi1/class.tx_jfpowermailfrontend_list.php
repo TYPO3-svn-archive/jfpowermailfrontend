@@ -74,16 +74,24 @@ class tx_jfpowermailfrontend_list extends tslib_pibase
 			);
 			
 			// 1. write xml values to an array
+			$rowArray = array();
+			$sortArr = array();
 			if ($res) { // If there is a result
+				$i = 0;
 				while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) { // One loop for every tx_powermail_mails entry
 					$row['piVars'] = t3lib_div::convUmlauts($row['piVars']); // rename not allowed signs
 					$piVars_array = t3lib_div::xml2array($row['piVars'], 'pivars'); // xml to array
-					if (!is_array($piVars_array)) $piVars_array = utf8_encode(t3lib_div::xml2array($row['piVars'], 'pivars')); // xml to array
+					if (!is_array($piVars_array)) {
+						$piVars_array = utf8_encode(t3lib_div::xml2array($row['piVars'], 'pivars')); // xml to array
+					}
 					unset($row['piVars']); // delete piVars from row array
-					$rowArray[] = array_merge((array) $piVars_array, (array) $row); // set array
+					$rowArray[$i] = array_merge((array) $piVars_array, (array) $row); // set array
+					$sortArr[$i] = ($this->conf[$this->mode . '.']['orderByPiVar'] ? $piVars_array[$this->conf[$this->mode . '.']['orderByPiVar']] : $i);
+					$i ++;
 				}
 			}
 			// 2. sort array and split array in parts for pagebrowser
+			array_multisort($sortArr, SORT_ASC, $rowArray);
 			$rowArray = $this->div->sortArray($rowArray, $this->conf, $this->mode, $this->piVars); // sort and filter array as wanted (e.g. settings via constants)
 			$this->overall = count($rowArray); // overall numbers of items
 			$rowArray = array_chunk($rowArray, $this->conf[$this->mode . '.']['perPage']); // split array in parts for pagebrowser
