@@ -10,7 +10,7 @@ t3lib_extMgm::addStaticFile($_EXTKEY, 'static/default_css/',     'Powermail Fron
 
 $powermailVersion = NULL;
 if (method_exists('t3lib_extMgm', 'getExtensionVersion2')) {
-	$powermailVersion = t3lib_div::int_from_ver(t3lib_extMgm::getExtensionVersion('powermail'));
+	$powermailVersion = t3lib_utility_VersionNumber::convertVersionNumberToInteger(t3lib_extMgm::getExtensionVersion('powermail'));
 }
 switch ($powermailVersion) {
 	case $powermailVersion < 1005000 : {
