@@ -34,6 +34,9 @@ $EM_CONF[$_EXTKEY] = array(
 	'CGLcompliance_note' => '',
 	'constraints' => array(
 		'depends' => array(
+			'cms' => '',
+			'php' => '5.0.0-0.0.0',
+			'typo3' => '4.5.5-4.99.999',
 			'powermail' => '1.4.9-',
 			'wt_doorman' => '1.3.0-',
 		),
