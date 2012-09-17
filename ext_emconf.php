@@ -36,7 +36,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'depends' => array(
 			'cms' => '',
 			'php' => '5.0.0-0.0.0',
-			'typo3' => '4.3.0-4.99.999',
+			'typo3' => '4.3.0-0.0.0',
 			'powermail' => '1.4.9-',
 			'wt_doorman' => '1.3.0-',
 		),
