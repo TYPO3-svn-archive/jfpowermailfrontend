@@ -42,10 +42,11 @@ class tx_jfpowermailfrontend_pi1_wizicon
 		$LL = $this->includeLocalLang();
 		$wizardItems['plugins_tx_jfpowermailfrontend_pi1'] = array(
 			'icon' => t3lib_extMgm::extRelPath('jfpowermailfrontend').'pi1/ce_wiz.gif',
-			'title' => $GLOBALS['LANG']->getLLL('pi1_title',$LL),
-			'description' => $GLOBALS['LANG']->getLLL('pi1_plus_wiz_description',$LL),
+			'title' => $GLOBALS['LANG']->getLLL('pi1_title', $LL),
+			'description' => $GLOBALS['LANG']->getLLL('pi1_plus_wiz_description', $LL),
 			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=jfpowermailfrontend_pi1'
 		);
+
 		return $wizardItems;
 	}
 
@@ -57,8 +58,12 @@ class tx_jfpowermailfrontend_pi1_wizicon
 	function includeLocalLang()
 	{
 		$llFile = t3lib_extMgm::extPath('jfpowermailfrontend').'locallang.xml';
-		$LOCAL_LANG = t3lib_div::readLLXMLfile($llFile, $GLOBALS['LANG']->lang);
-		
+		if (class_exists(t3lib_l10n_parser_Llxml)) {
+			$LOCAL_LANG = t3lib_l10n_parser_Llxml::getParsedData($llFile, $GLOBALS['LANG']->lang);
+		} else {
+			$LOCAL_LANG = t3lib_div::readLLXMLfile($llFile, $GLOBALS['LANG']->lang);
+		}
+
 		return $LOCAL_LANG;
 	}
 }
